@@ -1,125 +1,64 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Angsuran Kredit</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #f0f0f0;
-        }
-        .container {
-            text-align: center;
-            background: #ffffff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            width: 350px;
-        }
-        h1 {
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-        }
-        label {
-            font-weight: bold;
-            display: block;
-            margin: 10px 0 5px;
-        }
-        input {
-            width: 100%;
-            padding: 8px;
-            margin-bottom: 15px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-        }
-        button {
-            background-color: #007bff;
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 1rem;
-        }
-        button:hover {
-            background-color: #0056b3;
-        }
-        .result {
-            margin-top: 20px;
-            padding: 10px;
-            border: 1px solid #ddd;
-            background-color: #f9f9f9;
-            border-radius: 5px;
-            text-align: left;
-        }
-        .result p {
-            margin: 5px 0;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h1>Angsuran Kredit</h1>
-        <form id="kalkulatorForm">
-            <div>
-                <label for="hargaMobil">Harga Mobil (Rp):</label>
-                <input type="number" id="hargaMobil" placeholder="Contoh: 240000000" required>
-            </div>
-            <div>
-                <label for="dpPercentage">Persentase DP (%):</label>
-                <input type="number" id="dpPercentage" placeholder="Contoh: 20" required>
-            </div>
-            <div>
-                <label for="lamaCicilan">Lama Cicilan (bulan):</label>
-                <input type="number" id="lamaCicilan" placeholder="Contoh: 18" required>
-            </div>
-            <button type="button" onclick="hitungAngsuran()">Hitung</button>
-        </form>
-        
-        <div id="result" class="result" style="display: none;">
-            <h2>Hasil Perhitungan</h2>
-            <p><strong>Harga Mobil:</strong> <span id="outputHargaMobil"></span></p>
-            <p><strong>Down Payment (DP):</strong> <span id="outputDownPayment"></span></p>
-            <p><strong>Sisa Hutang:</strong> <span id="outputSisaHutang"></span></p>
-            <p><strong>Lama Cicilan:</strong> <span id="outputLamaCicilan"></span> bulan</p>
-            <p><strong>Angsuran per Bulan:</strong> <span id="outputAngsuran"></span></p>
-        </div>
-    </div>
-
-    <script>
+<!DOCTYPE html>  
+<html lang="id">  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>Hitung Angsuran</title>  
+</head>  
+<body>  
+    <h1>Hitung Angsuran Bulanan</h1>  
+    <label for="otr">Harga Mobil (OTR): </label>  
+    <input type="number" id="otr" value="240000000"><br><br>  
+  
+    <label for="dp">Down Payment (%): </label>  
+    <input type="number" id="dp" value="20"><br><br>  
+  
+    <label for="jangkaWaktu">Jangka Waktu (bulan): </label>  
+    <input type="number" id="jangkaWaktu" value="18"><br><br>  
+  
+    <button onclick="hitungAngsuran()">Hitung Angsuran</button>  
+  
+    <h2>Hasil:</h2>  
+    <p id="hasil"></p>  
+  
+    <script>  
         function hitungAngsuran() {
-            // Ambil input dari form
-            const hargaMobil = parseFloat(document.getElementById('hargaMobil').value);
-            const dpPercentage = parseFloat(document.getElementById('dpPercentage').value) / 100;
-            const lamaCicilan = parseInt(document.getElementById('lamaCicilan').value, 10);
-
-            // Validasi input
-            if (isNaN(hargaMobil) || isNaN(dpPercentage) || isNaN(lamaCicilan) || hargaMobil <= 0 || dpPercentage <= 0 || lamaCicilan <= 0) {
-                alert('Harap masukkan nilai yang valid.');
-                return;
-            }
-
-            // Hitung perhitungan
-            const downPayment = hargaMobil * dpPercentage;
-            const sisaHutang = hargaMobil - downPayment;
-            const angsuranPerBulan = sisaHutang / lamaCicilan;
-
-            // Tampilkan hasil
-            document.getElementById('outputHargaMobil').textContent = `Rp${hargaMobil.toLocaleString()}`;
-            document.getElementById('outputDownPayment').textContent = `Rp${downPayment.toLocaleString()}`;
-            document.getElementById('outputSisaHutang').textContent = `Rp${sisaHutang.toLocaleString()}`;
-            document.getElementById('outputLamaCicilan').textContent = lamaCicilan;
-            document.getElementById('outputAngsuran').textContent = `Rp${angsuranPerBulan.toLocaleString()}`;
-
-            document.getElementById('result').style.display = 'block';
-        }
-    </script>
-</body>
-</html>
+            debugger;
+            // Ambil nilai dari input  
+            const otr = parseFloat(document.getElementById('otr').value);  
+            const dpPersen = parseFloat(document.getElementById('dp').value) / 100;  
+            const jangkaWaktu = parseInt(document.getElementById('jangkaWaktu').value);  
+  
+            // Hitung Down Payment  
+            const dp = otr * dpPersen;  
+  
+            // Hitung Pokok Utang  
+            const pokokUtang = otr - dp;  
+  
+            // Tentukan bunga berdasarkan jangka waktu  
+            let bungaPersen;  
+            if (jangkaWaktu <= 12) {  
+                bungaPersen = 0.12; // 12%  
+            } else if (jangkaWaktu > 12 && jangkaWaktu <= 24) {  
+                bungaPersen = 0.14; // 14%  
+            } else {  
+                bungaPersen = 0.165; // 16.5%  
+            }  
+  
+            // Hitung Total Bunga  
+            const bungaTotal = pokokUtang * bungaPersen * (jangkaWaktu / 12);  
+  
+            // Hitung Total yang Harus Dibayar  
+            const totalBayar = pokokUtang + bungaTotal;  
+  
+            // Hitung Angsuran Bulanan  
+            const angsuranBulanan = totalBayar / jangkaWaktu;  
+  
+            // Tampilkan hasil  
+            document.getElementById('hasil').innerHTML = `
+                Angsuran Bulanan: Rp ${angsuranBulanan.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}  
+            `;  
+        }  
+    </script>  
+</body>  
+</html>  
