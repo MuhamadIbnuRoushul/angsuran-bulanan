@@ -29,13 +29,11 @@
             const dpPersen = parseFloat(document.getElementById('dp').value) / 100;  
             const jangkaWaktu = parseInt(document.getElementById('jangkaWaktu').value);  
   
-            // Hitung Down Payment  
             const dp = otr * dpPersen;  
   
-            // Hitung Pokok Utang  
             const pokokUtang = otr - dp;  
   
-            // Tentukan bunga berdasarkan jangka waktu  
+            
             let bungaPersen;  
             if (jangkaWaktu <= 12) {  
                 bungaPersen = 0.12; // 12%  
