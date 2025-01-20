@@ -34,7 +34,7 @@
 
             const pokokUtang = otr - dp;  
   
-            // Tentukan bunga berdasarkan jangka waktu  
+            
             let bungaPersen;  
             if (jangkaWaktu <= 12) {  
                 bungaPersen = 0.12; // 12%  
@@ -44,16 +44,16 @@
                 bungaPersen = 0.165; // 16.5%  
             }  
   
-            // Hitung Total Bunga  
+            
             const bungaTotal = pokokUtang * bungaPersen * (jangkaWaktu / 12);  
   
-            // Hitung Total yang Harus Dibayar  
+             
             const totalBayar = pokokUtang + bungaTotal;  
   
-            // Hitung Angsuran Bulanan  
+             
             const angsuranBulanan = totalBayar / jangkaWaktu;  
   
-            // Tampilkan hasil  
+             
             document.getElementById('hasil').innerHTML = `
                 Angsuran Bulanan: Rp ${angsuranBulanan.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}  
             `;  
