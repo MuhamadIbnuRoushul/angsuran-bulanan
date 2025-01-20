@@ -46,10 +46,13 @@ function hitungAngsuran() {
     // Tampilkan hasil    
     document.getElementById('hasil').innerHTML = `    
         Angsuran Bulanan: ${formatRupiah(angsuranBulanan)}    
-        <br>Total Pokok Utang: ${formatRupiah(pokokUtang)}    
-        <br>Total Bunga: ${formatRupiah(bungaTotal)}    
-        <br>Total yang Harus Dibayar: ${formatRupiah(totalBayar)}    
-    `;    
+          
+    `;
+    // <br>Total Pokok Utang: ${formatRupiah(pokokUtang)}    
+    // <br>Total Bunga: ${formatRupiah(bungaTotal)}    
+    // <br>Total yang Harus Dibayar: ${formatRupiah(totalBayar)}  
+
+    
 
     // Buat jadwal pembayaran    
     const jadwalTbody = document.querySelector('#jadwal tbody');    
